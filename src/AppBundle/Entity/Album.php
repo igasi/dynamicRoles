@@ -103,5 +103,38 @@ class Album
     {
         return $this->albumName;
     }
-}
 
+    /**
+     * Add gallery
+     *
+     * @param \AppBundle\Entity\Gallery $gallery
+     *
+     * @return Album
+     */
+    public function addGallery(\AppBundle\Entity\Gallery $gallery)
+    {
+        $this->galleries[] = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Remove gallery
+     *
+     * @param \AppBundle\Entity\Gallery $gallery
+     */
+    public function removeGallery(\AppBundle\Entity\Gallery $gallery)
+    {
+        $this->galleries->removeElement($gallery);
+    }
+
+    /**
+     * Get galleries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGalleries()
+    {
+        return $this->galleries;
+    }
+}

@@ -68,5 +68,28 @@ class Gallery
     {
         return $this->galleryName;
     }
-}
 
+    /**
+     * Set album
+     *
+     * @param \AppBundle\Entity\Album $album
+     *
+     * @return Gallery
+     */
+    public function setAlbum(\AppBundle\Entity\Album $album = null)
+    {
+        $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * Get album
+     *
+     * @return \AppBundle\Entity\Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+}
