@@ -40,6 +40,12 @@ class Gallery
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="Album", inversedBy="galleries")
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
+     */
+    protected $album;
+
+    /**
      * Set galleryName
      *
      * @param string $galleryName

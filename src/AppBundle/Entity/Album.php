@@ -35,6 +35,16 @@ class Album
      */
     private $albumName;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="Album")
+     */
+    protected $galleries;
+
+    public function __construct()
+    {
+        $this->galleries = new ArrayCollection();
+    }
+
 
     /**
      * Get id
