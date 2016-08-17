@@ -22,7 +22,7 @@ class User extends BaseUser implements AppBundleUserInterface
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @ORM\Column(type="string", length=12)
      *
      * @Assert\NotBlank(message="Please enter your Registration Code.", groups={"Registration", "Profile"})
      *

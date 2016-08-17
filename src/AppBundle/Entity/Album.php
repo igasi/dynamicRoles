@@ -26,7 +26,7 @@ class Album
     /**
      * @var string
      *
-     * @ORM\Column(name="RegCode", type="string", length=8)
+     * @ORM\Column(name="RegCode", type="string", length=12)
      */
     private $regCode;
 

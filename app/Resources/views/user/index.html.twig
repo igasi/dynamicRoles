@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+
     <h1>User list</h1>
 
     <table>
@@ -36,4 +39,5 @@
             <a href="{{ path('user_new') }}">Create a new entry</a>
         </li>
     </ul>
+    {% endif %}
 {% endblock %}
