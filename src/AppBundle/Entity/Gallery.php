@@ -40,7 +40,7 @@ class Gallery
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Album", inversedBy="galleries")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Album", inversedBy="galleries")
      * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
      */
     protected $album;

@@ -38,7 +38,7 @@ class Album
     private $albumName;
 
     /**
-     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="Album")
+     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="album")
      */
     protected $galleries;
 
@@ -138,5 +138,9 @@ class Album
     public function getGalleries()
     {
         return $this->galleries;
+    }
+
+    public function __toString() {
+        return $this->albumName;
     }
 }
