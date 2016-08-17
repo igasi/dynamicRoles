@@ -21,7 +21,7 @@
         </thead>
         <tbody>
         {% for album in albums %}
-        {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ album.regcode ) %}
+        {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ album.regcode |upper) %}
             <tr>
                 <td><a href="{{ path('album_show', { 'id': album.id }) }}">{{ album.id }}</a></td>
                 <td>{{ album.regCode }}</td>

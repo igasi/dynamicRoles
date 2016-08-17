@@ -21,7 +21,7 @@
         </thead>
         <tbody>
         {% for gallery in galleries %}
-        {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode ) %}
+        {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode|upper ) %}
             <tr>
                 <td><a href="{{ path('gallery_show', { 'id': gallery.id }) }}">{{ gallery.id }}</a></td>
                 <td>{{ gallery.galleryName }}</td>

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode ) %}
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode|upper ) %}
     <h1>Gallery</h1>
 
     <table>

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ album.regcode ) %}
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ album.regcode |upper ) %}
 
 
     <h1>Album edit</h1>
