@@ -16,17 +16,39 @@
 <nav class="" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="/register">Register</a></li>
-            <li><a href="/user">Users</a></li>
-            <li><a href="/album">Albums</a></li>
-            <li><a href="/gallery">Galleries</a></li>
+            {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+            {% endif %}
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <li><a href="{{ path('user_index') }}">Users</a></li>
+            <li><a href="{{ path('album_index') }}">Albums</a></li>
+            <li><a href="{{ path('gallery_index') }}">Galleries</a></li>
+            {% endif %}
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a href="/register">Register</a></li>
-            <li><a href="/user">Users</a></li>
-            <li><a href="/album">Albums</a></li>
-            <li><a href="/gallery">Galleries</a></li>
+            {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+            {% endif %}
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li><a href="{{ path('user_index') }}">Users</a></li>
+                <li><a href="{{ path('album_index') }}">Albums</a></li>
+                <li><a href="{{ path('gallery_index') }}">Galleries</a></li>
+            {% endif %}
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
