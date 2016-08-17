@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     <h1>Album list</h1>
+
+        <ul>
+            <li>
+                <a href="{{ path('album_new') }}">Create a new entry</a>
+            </li>
+        </ul>
 
     <table>
         <thead>
@@ -14,6 +21,7 @@
         </thead>
         <tbody>
         {% for album in albums %}
+        {% if is_granted('ROLE_' ~ album.regcode ) %}
             <tr>
                 <td><a href="{{ path('album_show', { 'id': album.id }) }}">{{ album.id }}</a></td>
                 <td>{{ album.regCode }}</td>
@@ -29,13 +37,10 @@
                     </ul>
                 </td>
             </tr>
+        {% endif %}
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('album_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    {%  endif %}
 {% endblock %}

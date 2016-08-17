@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
     <h1>Album edit</h1>
 
     {{ form_start(edit_form) }}
@@ -18,4 +22,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+    {% endif %}
 {% endblock %}

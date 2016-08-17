@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if is_granted('ROLE_' ~ album.regcode ) %}
     <h1>Album</h1>
 
     <table>
@@ -33,4 +34,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}
