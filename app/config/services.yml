@@ -11,3 +11,7 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    appbundle.set_role_by_regcode:
+            class: AppBundle\EventListener\DynamicRolesByRegcodeListener
+            tags:
+                - { name: kernel.event_subscriber }

@@ -35,12 +35,6 @@ class User extends BaseUser implements AppBundleUserInterface
     {
         parent::__construct();
 
-        $customRole = new UserDependentRole($this);
-
-        var_dump($this);
-
-        $this->addRole($customRole->getRole());
-
     }
 
     public function setRegcode($regcode)

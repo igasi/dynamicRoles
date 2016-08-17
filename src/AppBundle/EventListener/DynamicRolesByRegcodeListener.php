@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\UserBundle\EventListener;
+namespace AppBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\UserEvent;
@@ -11,7 +11,7 @@ use AppBundle\UserDependentRole;
 /**
  * Listener responsible to change the redirection at the end of the password resetting
  */
-class DynamicRoleByRegcodeListener implements EventSubscriberInterface
+class DynamicRolesByRegcodeListener implements EventSubscriberInterface
 {
 
     /**
@@ -20,7 +20,7 @@ class DynamicRoleByRegcodeListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_INITIALIZE => 'setDynamicRoleByCode',
+            FOSUserEvents::SECURITY_IMPLICIT_LOGIN => 'setDynamicRoleByCode',
         );
     }
 
@@ -32,7 +32,6 @@ class DynamicRoleByRegcodeListener implements EventSubscriberInterface
 
         $customRole = new UserDependentRole($user);
 
-        $user->addRole('ROLE_USER');
         $user->addRole($customRole->getRole());
 
     }
