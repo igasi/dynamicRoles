@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ album.regcode ) %}
 
     <h1>Album creation</h1>
 

@@ -28,6 +28,19 @@ class Gallery
      */
     private $galleryName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RegCode", type="string", length=12)
+     */
+    private $regCode;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Album", inversedBy="galleries")
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
+     */
+    protected $album;
 
     /**
      * Get id
@@ -38,12 +51,6 @@ class Gallery
     {
         return $this->id;
     }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Album", inversedBy="galleries")
-     * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
-     */
-    protected $album;
 
     /**
      * Set galleryName
@@ -91,5 +98,29 @@ class Gallery
     public function getAlbum()
     {
         return $this->album;
+    }
+
+    /**
+     * Set regCode
+     *
+     * @param string $regCode
+     *
+     * @return Gallery
+     */
+    public function setRegCode($regCode)
+    {
+        $this->regCode = $regCode;
+
+        return $this;
+    }
+
+    /**
+     * Get regCode
+     *
+     * @return string
+     */
+    public function getRegCode()
+    {
+        return $this->regCode;
     }
 }

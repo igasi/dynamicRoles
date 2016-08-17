@@ -137,5 +137,4 @@ class GalleryController extends Controller
             ->getForm()
         ;
     }
-
 }

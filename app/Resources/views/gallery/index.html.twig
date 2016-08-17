@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     <h1>Gallery list</h1>
+
+        <ul>
+            <li>
+                <a href="{{ path('gallery_new') }}">Create a new entry</a>
+            </li>
+        </ul>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Galleryname</th>
+                <th>Regcode</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for gallery in galleries %}
+        {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode ) %}
             <tr>
                 <td><a href="{{ path('gallery_show', { 'id': gallery.id }) }}">{{ gallery.id }}</a></td>
                 <td>{{ gallery.galleryName }}</td>
+                <td>{{ gallery.regCode }}</td>
                 <td>
                     <ul>
                         <li>
@@ -27,13 +37,11 @@
                     </ul>
                 </td>
             </tr>
+        {% endif %}
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('gallery_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+    {% endif %}
 {% endblock %}

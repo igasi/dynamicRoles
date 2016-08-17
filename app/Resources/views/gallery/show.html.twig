@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or is_granted('ROLE_' ~ gallery.regcode ) %}
     <h1>Gallery</h1>
 
     <table>
@@ -12,6 +13,10 @@
             <tr>
                 <th>Galleryname</th>
                 <td>{{ gallery.galleryName }}</td>
+            </tr>
+            <tr>
+                <th>Regcode</th>
+                <td>{{ gallery.regCode }}</td>
             </tr>
         </tbody>
     </table>
@@ -29,4 +34,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

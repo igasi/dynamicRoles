@@ -16,6 +16,7 @@ class GalleryType extends AbstractType
     {
         $builder
             ->add('galleryName')
+            ->add('regCode')
             ->add('album')
         ;
     }
