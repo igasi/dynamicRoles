@@ -37,7 +37,8 @@ class User extends BaseUser implements AppBundleUserInterface
 
         $customRole = new UserDependentRole($this);
 
-        $this->addRole('ROLE_USER');
+        var_dump($this);
+
         $this->addRole($customRole->getRole());
 
     }

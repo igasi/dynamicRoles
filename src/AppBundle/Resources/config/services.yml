@@ -1,0 +1,5 @@
+services:
+    appbundle.set_role_by_regcode:
+        class: AppBundle\EventListener\SetDynamicRolesListener
+        tags:
+            - { name: kernel.event_subscriber }
