@@ -16,6 +16,14 @@
 </div>
 <div class="row no-padding">
     <div class="input-field col s12">
+
+        {{ form_label(form.regcode) }}
+        {{ form_widget(form.regcode) }}
+    </div>
+    {{ form_errors(form.regcode) }}
+</div>
+<div class="row no-padding">
+    <div class="input-field col s12">
         {{ form_label(form.plainPassword.first) }}
         {{ form_widget(form.plainPassword.first) }}
     </div>

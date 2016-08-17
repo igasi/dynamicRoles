@@ -4,14 +4,16 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\UserInterface;
+use AppBundle\Entity\UserInterface as AppBundleUserInterface;
 use AppBundle\UserDependentRole;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
-class User extends BaseUser implements UserInterface
+class User extends BaseUser implements AppBundleUserInterface
 {
     /**
      * @ORM\Id
@@ -22,6 +24,9 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=8)
+     *
+     * @Assert\NotBlank(message="Please enter your Registration Code.", groups={"Registration", "Profile"})
+     *
      */
     protected $regcode;
 
